@@ -7,7 +7,6 @@ import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import joblib
-import mlflow
 from database import SessionLocal
 import models
 
@@ -41,17 +40,14 @@ def train():
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
-    mlflow.set_experiment("sih26017-delay-prediction")
-    with mlflow.start_run():
-        clf = xgb.XGBClassifier(use_label_encoder=False, eval_metric='logloss', max_depth=4)
-        clf.fit(X_train, y_train)
-        
-        acc = clf.score(X_test, y_test)
-        mlflow.log_metric("accuracy", acc)
-        
-        # Save model
-        model_path = os.path.join(os.path.dirname(__file__), 'xgb_model.joblib')
-        joblib.dump(clf, model_path)
+    clf = xgb.XGBClassifier(use_label_encoder=False, eval_metric='logloss', max_depth=4)
+    clf.fit(X_train, y_train)
+    
+    acc = clf.score(X_test, y_test)
+    
+    # Save model
+    model_path = os.path.join(os.path.dirname(__file__), 'xgb_model.joblib')
+    joblib.dump(clf, model_path)
     
     return {"status": "trained", "accuracy": acc}
 
