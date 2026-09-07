@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/Marvix/Hackathon/sih26017-app/mlruns/668570349688817729/c4c323cd95264d97ab32840b3c054d5c/artifacts
+end_time: 1788329207692
+entry_point_name: ''
+experiment_id: '668570349688817729'
+lifecycle_stage: active
+run_id: c4c323cd95264d97ab32840b3c054d5c
+run_name: charming-penguin-750
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1788329207601
+status: 3
+tags: []
+user_id: Printing Three

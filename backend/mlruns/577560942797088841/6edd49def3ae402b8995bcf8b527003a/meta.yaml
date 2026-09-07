@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/Marvix/Hackathon/sih26017-app/backend/mlruns/577560942797088841/6edd49def3ae402b8995bcf8b527003a/artifacts
+end_time: 1788329241189
+entry_point_name: ''
+experiment_id: '577560942797088841'
+lifecycle_stage: active
+run_id: 6edd49def3ae402b8995bcf8b527003a
+run_name: marvelous-gull-275
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1788329241108
+status: 3
+tags: []
+user_id: Printing Three

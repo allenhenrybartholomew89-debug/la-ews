@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/Marvix/Hackathon/sih26017-app/mlruns/668570349688817729/c3ce6c03b9c64d6fbf3cef28ad4eb95a/artifacts
+end_time: 1788288552605
+entry_point_name: ''
+experiment_id: '668570349688817729'
+lifecycle_stage: active
+run_id: c3ce6c03b9c64d6fbf3cef28ad4eb95a
+run_name: silent-ant-651
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1788288552491
+status: 3
+tags: []
+user_id: Printing Three
