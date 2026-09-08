@@ -48,6 +48,15 @@ export default function GovTechDashboard() {
   const [simParams, setSimParams] = useState(null);
   const [simResult, setSimResult] = useState(null);
   const [isSimulating, setIsSimulating] = useState(false);
+  const [syncingId, setSyncingId] = useState(null);
+
+  const handleLaunchSurvey = (id) => {
+    setSyncingId(id);
+    setTimeout(() => {
+      alert("Success: Cadastral Survey Initiated. GPS telemetry linked to Bhu-Aadhaar registry.");
+      setSyncingId(null);
+    }, 1500);
+  };
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -223,8 +232,8 @@ export default function GovTechDashboard() {
         </div>
 
         {activeRole === 'nodal' ? (
-          <div className="flex-1 flex overflow-hidden">
-            <div className="w-[320px] shrink-0 bg-slate-50 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 p-6 overflow-y-auto">
+          <div className="flex flex-col lg:flex-row w-full gap-6 p-4 lg:p-0">
+            <div className="w-full lg:w-1/4 bg-slate-50 dark:bg-slate-950 border-r-0 lg:border-r border-b lg:border-b-0 border-slate-200 dark:border-slate-800 p-6">
               <h2 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">JMS Surveys Pending</h2>
               <div className="space-y-4">
                 {filteredProjects.map((p) => (
@@ -235,14 +244,27 @@ export default function GovTechDashboard() {
                   >
                     <div className="font-bold text-sm text-slate-900 dark:text-white">{p.name}</div>
                     <div className="text-xs text-slate-500 mt-1">ULPIN: {p.ulpin || 'Pending Assignment'}</div>
-                    <button className="mt-3 w-full bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 py-2 rounded-lg text-xs font-bold border border-indigo-200 dark:border-indigo-500/30 transition-colors">
-                      Launch Cadastral Survey
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleLaunchSurvey(p.id);
+                      }}
+                      className="mt-3 w-full bg-indigo-50 dark:bg-indigo-500/10 hover:bg-indigo-100 dark:hover:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 py-2 rounded-lg text-xs font-bold border border-indigo-200 dark:border-indigo-500/30 transition-colors flex items-center justify-center gap-2"
+                    >
+                      {syncingId === p.id ? (
+                        <>
+                          <div className="w-3 h-3 border-2 border-indigo-600/30 border-t-indigo-600 rounded-full animate-spin"></div>
+                          Syncing...
+                        </>
+                      ) : (
+                        'Launch Cadastral Survey'
+                      )}
                     </button>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="flex-1 flex flex-col bg-white dark:bg-slate-900 overflow-hidden relative z-0">
+            <div className="w-full lg:flex-1 flex flex-col bg-white dark:bg-slate-900 relative z-0">
               <AdminIngest isDarkMode={isDarkMode} onIngest={handleIngestProject} />
             </div>
           </div>

@@ -96,10 +96,10 @@ export default function AdminIngest({ isDarkMode, onIngest }) {
   };
 
   return (
-    <div className="flex-1 flex overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-200">
+    <div className="w-full flex flex-col lg:flex-row bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-200">
       
       {/* Sidebar Navigation */}
-      <div className="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col p-4 shadow-sm z-10">
+      <div className="w-full lg:w-1/5 bg-white dark:bg-slate-900 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 flex flex-col p-4 shadow-sm z-10">
         <h2 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-6 px-3 flex items-center gap-2">
           <Database size={16} /> Data Operations
         </h2>
@@ -118,7 +118,7 @@ export default function AdminIngest({ isDarkMode, onIngest }) {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto p-8">
+      <div className="w-full lg:flex-1 p-4 lg:p-8">
         <div className="max-w-5xl mx-auto">
 
           {/* SINGLE PARCEL INGESTION */}
